@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Жүлделер галереясы</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            color: #333;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(90deg, #1a3a6c 0%, #2c5a9d 100%);
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+        
+        .subtitle {
+            color: #d1e4ff;
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .award-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .award-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+        }
+        
+        .award-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .award-img:hover {
+            transform: scale(1.03);
+        }
+        
+        .award-info {
+            padding: 20px;
+        }
+        
+        .award-title {
+            font-size: 1.3rem;
+            color: #2c5a9d;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        .award-desc {
+            color: #555;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+        
+        .recipient {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px dashed #e0e0e0;
+        }
+        
+        .recipient img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+            object-fit: cover;
+            border: 2px solid #1a3a6c;
+        }
+        
+        .recipient-name {
+            font-weight: bold;
+            color: #1a3a6c;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            overflow: auto;
+        }
+        
+        .modal-content {
+            margin: 5% auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90%;
+            animation: zoom 0.3s;
+        }
+        
+        @keyframes zoom {
+            from {transform: scale(0.9); opacity: 0;}
+            to {transform: scale(1); opacity: 1;}
+        }
+        
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        
+        .close:hover {
+            color: #bbb;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #666;
+            font-size: 0.9rem;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        @media (max-width: 768px) {
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Алматы қаласы Наурызбай ауданы
+                                      №206 мектеп-гимназия жүлдегерлері</h1>
+            <p class="subtitle">Оқушылардың академиялық жетістіктері мен жүлделі құжаттары</p>
+        </header>
+        
+        <div class="gallery">
+           
+             <div class="award-card">
+                <img src="ОАБАЙРесп.png" alt="Абай оқулары дипломы" class="award-img" onclick="openModal(this)">
+                <div class="award-info">
+                    <div class="award-title">Республикалық Абай оқулары</div>
+                    <div class="award-desc">Қазақ әдебиеті бойынша ерекше жетістіктері үшін</div>
+                    <div class="recipient">
+                        <div class="recipient-name">Абилда Мархаба</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Басқа жүлделер -->
+            <div class="award-card">
+                <img src="Ұл.jpg" alt="Ғылыми жоба дипломы" class="award-img" onclick="openModal(this)">
+                <div class="award-info">
+                    <div class="award-title">Ғылыми жобалар Республикалық конкурсы</div>
+                    <div class="award-desc">Тіл білім (қазақ) секциясы бойынша жүлдегер</div>
+                    <div class="recipient">
+                        <div class="recipient-name">Сатыбалды Ұлпан</div>
+                    </div>
+                </div>
+            </div>
+
+             <!-- Басқа жүлделер -->
+            <div class="award-card">
+                <img src="Ад.jpg" alt="Ғылыми жоба дипломы" class="award-img" onclick="openModal(this)">
+                <div class="award-info">
+                    <div class="award-title">Ғылыми жобалар Республикалық конкурсы</div>
+                    <div class="award-desc">Тіл білім (қазақ) секциясы бойынша жүлдегер</div>
+                    <div class="recipient">
+                        <div class="recipient-name">Мәней Әдия</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="award-card">
+                <img src="ОАбайқала.png" alt="Абай оқулары дипломы" class="award-img" onclick="openModal(this)">
+                <div class="award-info">
+                    <div class="award-title">қалалық Абай оқулары</div>
+                    <div class="award-desc">Қазақ әдебиеті бойынша ерекше жетістіктері үшін</div>
+                    <div class="recipient">
+                        <div class="recipient-name">Абилда Мархаба</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="award-card">
+                <img src="ОМұқағали.png" alt="Мұқағали оқулары" class="award-img" onclick="openModal(this)">
+                <div class="award-info">
+                    <div class="award-title">Мұқағали Мақатаев оқулары</div>
+                    <div class="award-desc">"Көкірегімде жыр сәулесі маздайды..." номинациясы</div>
+                    <div class="recipient">
+                        <div class="recipient-name">Абилда Мархаба</div>
+                    </div>
+                </div>
+            </div>
+
+<div class="award-card">
+                <img src="ОҚыран.png" alt="Қыран елім- Қазақстан" class="award-img" onclick="openModal(this)">
+                <div class="award-info">
+                    <div class="award-title">Жалпыреспубликалық патриоттық акция аясында өткен мәнерлеп оқу байқауы</div>
+                    <div class="award-desc">"II-дәрежелі"диплом номинациясы</div>
+                    <div class="recipient">
+                        <div class="recipient-name">Абилда Мархаба</div>
+                    </div>
+                </div>
+            </div>
+           <div class="award-card">
+                <img src="оЗерде ҚатьятҚала.jpg" alt="Сатылай технологиясы" class="award-img" onclick="openModal(this)">
+                <div class="award-info">
+                    <div class="award-title">"Зерде" ғылыми жобалар байқауы</div>
+                    <div class="award-desc">қазақ тілі мен әдебиеті секциясы бойынша</div>
+                    <div class="recipient">
+                        <div class="recipient-name">Қатьят Балнұр</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="award-card">
+                <img src="ОНҰР.jpg" alt="Ақбота олимпиадасы" class="award-img" onclick="openModal(this)">
+                <div class="award-info">
+                    <div class="award-title">"Ақбота" зияткерлік олимпиадасы</div>
+                    <div class="award-desc">Жалпы білім беретін пәндер бойынша жеңімпаз</div>
+                    <div class="recipient">
+                        <div class="recipient-name">Далабай Нұрдин</div>
+                    </div>
+                </div>
+            </div>
+            
+             <div class="award-card">
+                <img src="ОАЛУА.jpg" alt="Ақбота олимпиадасы" class="award-img" onclick="openModal(this)">
+                <div class="award-info">
+                    <div class="award-title">"Ақбота" зияткерлік олимпиадасы</div>
+                    <div class="award-desc">Жалпы білім беретін пәндер бойынша жеңімпаз</div>
+                    <div class="recipient">
+                        <div class="recipient-name">Кудайберген Алуа</div>
+                    </div>
+                </div>
+            </div>
+
+             <div class="award-card">
+                <img src="ОХАН.jpg" alt="Ақбота олимпиадасы" class="award-img" onclick="openModal(this)">
+                <div class="award-info">
+                    <div class="award-title">"Ақбота" зияткерлік олимпиадасы</div>
+                    <div class="award-desc">Жалпы білім беретін пәндер бойынша жеңімпаз</div>
+                    <div class="recipient">
+                        <div class="recipient-name">Мавлен Ханшайым</div>
+                    </div>
+                </div>
+            </div>
+
+             <div class="award-card">
+                <img src="ОАқбота Еркежан.png" alt="Ақбота олимпиадасы" class="award-img" onclick="openModal(this)">
+                <div class="award-info">
+                    <div class="award-title">"Ақбота" зияткерлік олимпиадасы</div>
+                    <div class="award-desc">Жалпы білім беретін пәндер бойынша жеңімпаз</div>
+                    <div class="recipient">
+                        <div class="recipient-name">Азат Еркежан</div>
+                    </div>
+                </div>
+            </div>
+
+<div class="award-card">
+                <img src="ОАяж.jpg" alt="Сатылай технологиясы" class="award-img" onclick="openModal(this)">
+                <div class="award-info">
+                    <div class="award-title">Сатылай кешенді оқыту технологиясы</div>
+                    <div class="award-desc">Ауызша командалық олимпиада жеңімпазы</div>
+                    <div class="recipient">
+                        <div class="recipient-name">Даубаева Аяжан</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="award-card">
+                <img src="ОХанКітап.jpg" alt="Кітап кз жүлдесі" class="award-img" onclick="openModal(this)">
+                <div class="award-info">
+                    <div class="award-title">"Оқы-Жеңіс" байқауы</div>
+                    <div class="award-desc">Ең белсенді оқырман марапаты</div>
+                    <div class="recipient">
+                        <div class="recipient-name">Мавлен Ханшайым Мұхтарқызы</div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+            <div class="award-card">
+                <img src="қала Балафест.png" alt="БалаFest жүлдесі" class="award-img" onclick="openModal(this)">
+                <div class="award-info">
+                    <div class="award-title">"Алматы BALAFEST" фестивалі</div>
+                    <div class="award-desc">"Кітап-білім бұлағы" байқауы жеңімпазы</div>
+                    <div class="recipient">
+                        <div class="recipient-name">Абилда Мархаба</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal для увеличенного просмотра -->
+    <div id="modal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modal-img">
+    </div>
+
+    <footer>
+        <p>© 2025 Алматы қалас, Наурызбай ауданы №206 мектеп-гимназия. Барлық құқықтар қорғалған</p>
+        <p>Жетекші: Кайназарова Жүлдыз Есімханқызы</p>
+    </footer>
+
+    <script>
+        // Модальное окно для изображений
+        function openModal(img) {
+            const modal = document.getElementById("modal");
+            const modalImg = document.getElementById("modal-img");
+            modal.style.display = "block";
+            modalImg.src = img.src;
+            document.body.style.overflow = "hidden"; // Блокируем прокрутку
+        }
+        
+        function closeModal() {
+            document.getElementById("modal").style.display = "none";
+            document.body.style.overflow = "auto"; // Восстанавливаем прокрутку
+        }
+        
+        // Закрытие модального окна при клике вне изображения
+        window.onclick = function(event) {
+            const modal = document.getElementById("modal");
+            if (event.target === modal) {
+                closeModal();
+            }
+        };
+    </script>
+</body>
+</html>

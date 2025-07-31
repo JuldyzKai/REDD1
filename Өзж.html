@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Жүлделі сертификаттар портфолиосы</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #2e7d32, #1b5e20);
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .certificates-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin: 0 auto;
+            max-width: 1400px;
+        }
+        
+        .certificate {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .certificate:hover {
+            transform: translateY(-5px);
+        }
+        
+        .certificate-img {
+            width: 100%;
+            height: 250px;
+            object-fit: contain;
+            border-bottom: 1px solid #eee;
+            background: white;
+            padding: 10px;
+        }
+        
+        .certificate-info {
+            padding: 15px;
+        }
+        
+        .certificate-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #2e7d32;
+        }
+        
+        .certificate-date {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        
+        .certificate-desc {
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .certificates-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Жүлделі орындар, жетістіктер</h1>
+        <p>Қайназарова Жұлдыз Есімханқызының кәсіби жетістіктері</p>
+    </div>
+    
+    <div class="certificates-container">
+        <!-- 1. БІЛІМ ланд сертификаты -->
+        <div class="certificate">
+            <img src="1Цифрлық педагог.jpg" alt="Цифрлық педагог сертификаты" class="certificate-img">
+            <div class="certificate-info">
+                <div class="certificate-title">«Цифрлық педагог</div>
+                <div class="certificate-date">28.05.2025</div>
+                <div class="certificate-desc">Ең белсенді қатысушы» номинациясы</div>
+            </div>
+        </div>
+        
+        <!-- 2. Хакатон дипломы -->
+        <div class="certificate">
+            <img src="Хакатон.png" alt="Хакатон дипломы" class="certificate-img">
+            <div class="certificate-info">
+                <div class="certificate-title">II дәрежелі диплом</div>
+                <div class="certificate-date">2025 жыл</div>
+                <div class="certificate-desc">«Қаhар» романы бойынша шығармашылық хакатон</div>
+            </div>
+        </div>
+        
+        <!-- 3. Үздік ҚМЖ дипломы -->
+        <div class="certificate">
+            <img src="ҮздікҚМЖ.png" alt="Үздік ҚМЖ дипломы" class="certificate-img">
+            <div class="certificate-info">
+                <div class="certificate-title">Үздік сабақ жоспары</div>
+                <div class="certificate-date">2025 жыл</div>
+                <div class="certificate-desc">Қалалық байқау жеңімпазы</div>
+            </div>
+        </div>
+        
+        <!-- 4. Бабалар аманаты қалалық -->
+        <div class="certificate">
+            <img src="Бабалар қала.png" alt="Бабалар аманаты қалалық" class="certificate-img">
+            <div class="certificate-info">
+                <div class="certificate-title">«Бабалар аманаты» байқауы</div>
+                <div class="certificate-date">2023 жыл</div>
+                <div class="certificate-desc">Қалалық кезең жүлдегері</div>
+            </div>
+        </div>
+        
+        <!-- 5. Бабалар аманаты аудандық -->
+        <div class="certificate">
+            <img src="Бабалар аудан.png" alt="Бабалар аманаты аудандық" class="certificate-img">
+            <div class="certificate-info">
+                <div class="certificate-title">«Бабалар аманаты» аудандық</div>
+                <div class="certificate-date">2024 жыл</div>
+                <div class="certificate-desc">III орын, Махмұд Қашқари туралы</div>
+            </div>
+        </div>
+        
+        <!-- 6. Цифрлық педагог -->
+        <div class="certificate">
+            <img src="Жаңашыл.png" alt="БІЛІМ ланд сертификаты" class="certificate-img">
+            <div class="certificate-info">
+                <div class="certificate-title">Жанашыл муғалім - 2023» финалисті</div>
+                <div class="certificate-date">29.05.2023 жыл</div>
+                <div class="certificate-desc">«Республикалық байқау финалисі, Bilim Lands ЖШС</div>
+            </div>
+        </div>
+        
+        <!-- 7. Үздік оқырман -->
+        <div class="certificate">
+            <img src="1Үздік оқырман.jpg" alt="Үздік оқырман дипломы" class="certificate-img">
+            <div class="certificate-info">
+                <div class="certificate-title">Үздік оқырман</div>
+                <div class="certificate-date">2024 жыл</div>
+                <div class="certificate-desc">Республикалық мұғалімдер байқауы</div>
+            </div>
+        </div>
+        
+        <!-- 8. Педстарт -->
+        <div class="certificate">
+            <img src="1Педстарт2024.jpg" alt="Педстарт дипломы" class="certificate-img">
+            <div class="certificate-info">
+                <div class="certificate-title">ПЕД START олимпиадасы</div>
+                <div class="certificate-date">2024 жыл</div>
+                <div class="certificate-desc">Республикалық қазақ тілі олимпиадасы</div>
+            </div>
+        </div>
+        
+        <!-- 9. Қайдар сертификаты -->
+        <div class="certificate">
+            <img src="1Серт Қайдар.jpg" alt="Қайдар сертификаты" class="certificate-img">
+            <div class="certificate-info">
+                <div class="certificate-title">Түркі терминологиясы</div>
+                <div class="certificate-date">2024 жыл</div>
+                <div class="certificate-desc">Халықаралық конференцияға қатысушы</div>
+            </div>
+        </div>
+    </div>
+   <!-- 10. Сатылай сертификаты -->
+        <div class="certificate">
+            <img src="сатылай.png" alt="Сатылай сертификаты" class="certificate-img">
+            <div class="certificate-info">
+                <div class="certificate-title">«Сатылай» олимпиадасы</div>
+                <div class="certificate-date">2023 жыл</div>
+                <div class="certificate-desc">Қалалық СКО технологиясы олипиадасының әділқазысы</div>
+            </div>
+        </div>
+     
+                    <div class="certificate-description">
+    </div>
+    <div class="footer">
+        &copy; 2025 | Кайназарова Жұлдыз есімханқызының кәсіби портфолиосы
+    </div>
+</body>
+</html>
